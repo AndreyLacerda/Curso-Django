@@ -1,2 +1,3 @@
 *.pyc
 staticfiles
+local_settings.py

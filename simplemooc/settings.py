@@ -162,7 +162,15 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'simplemooc/core/static'),
+    os.path.join(BASE_DIR, 'simplemooc/core/static/css'),
+    os.path.join(BASE_DIR, 'simplemooc/core/static/font'),
+    os.path.join(BASE_DIR, 'simplemooc/core/static/fonts'),
+    os.path.join(BASE_DIR, 'simplemooc/core/static/img')
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+try: 
+    from local_settings import *
+except ImportError:
+    pass
