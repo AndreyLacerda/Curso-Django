@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load courses_tags %}
+
+{% block content %}
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u-1">
+        <ul class="breadcrumb">
+            {% block breadcrumb %}
+            <li><a href="{% url 'accounts:dashboard' %}">Meu Painel</a></li>
+            {% endblock %}
+        </ul>
+    </div>
+    <div class="pure-u-1-3">
+        <div class="pure-menu pure-menu-open">
+            <ul>
+                <li class="pure-menu-heading">
+                    Bem-Vindo, {{ user }}
+                </li>
+                {% block menu_options %}
+                {% my_courses user %}
+                <li class="pure-menu-heading">Configurações de Conta</li>
+                <li>
+                    <a href="{% url 'accounts:edit' %}">
+                        <i class="fa fa-cog"></i>
+                        Editar Conta
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'accounts:edit_password' %}">
+                        <i class="fa fa-lock"></i>
+                        Editar Senha
+                    </a>
+                </li>
+                {% endblock %}
+            </ul>
+        </div>
+    </div>
+    <div class="pure-u-2-3">
+        <div class="inner">
+            {% block dashboard_content %}
+                {% my_courses_dash user %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}

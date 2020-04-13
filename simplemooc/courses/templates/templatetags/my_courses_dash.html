@@ -1,0 +1,15 @@
+<h2>Meus Cursos</h2>
+{% for enrollment in enrollments %}
+<div class="well">
+    <h3>{{ enrollment.course }} ({{ enrollment.course.start_date|date:'d/m/Y'|default:'Sem data' }})</h3>
+    {{ enrollment.course.description|linebreaks }}
+    <div class="pure-controls">
+        <a href="{% url 'courses:announcements' enrollment.course.slug %}" class="pure-button pure-button-primary"> Acessar</a>
+        <a href="{% url 'courses:undo_enrollment' enrollment.course.slug %}" class="pure-button button-error"> Cancelar</a>
+    </div>
+</div>
+{% empty %}
+<aside class="pure-u-1">
+    <p>Nenhum curso inscrito</p>
+</aside>
+{% endfor %}
