@@ -1,1 +1,1 @@
-worker: gunicorn myproject.wsgi
+web: gunicorn simplemooc.wsgi
